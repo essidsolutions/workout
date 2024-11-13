@@ -35,6 +35,12 @@ class AppDrawer extends StatelessWidget {
             onTap: () {
               Navigator.pop(context, );
             },
+          ), ListTile(
+            leading: Icon(Icons.settings),
+            title: Text('About Us'),
+            onTap: () {
+              Navigator.pop(context, );
+            },
           ),
           // Add more ListTiles for other pages here
         ],
