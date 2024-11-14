@@ -1,6 +1,6 @@
 // main.dart
 import 'package:flutter/material.dart';
-import 'main_page.dart';
+import 'screens/home_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -10,11 +10,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Fixable',
+      title: 'TaskRabbit Clone',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MainPage(), // MainPage with bottom navigation
+      home: HomePage(),
     );
   }
 }
