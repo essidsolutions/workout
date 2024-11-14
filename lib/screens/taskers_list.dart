@@ -27,7 +27,7 @@ class TaskersList extends StatelessWidget {
         } else if (snapshot.hasError) {
           return Center(child: Text('Error: ${snapshot.error}'));
         } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-          return Center(child: Text('No taskers found nearby.'));
+          return _buildNoTaskersFound(context);
         } else {
           final taskers = snapshot.data!;
           return Scaffold(
@@ -51,6 +51,48 @@ class TaskersList extends StatelessWidget {
           );
         }
       },
+    );
+  }
+
+  // Custom widget to show when no taskers are found
+  Widget _buildNoTaskersFound(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('Available Taskers')),
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(24.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.network(
+                'https://via.placeholder.com/150',
+                width: 150,
+                height: 150,
+              ),
+              SizedBox(height: 20),
+              Text(
+                'No Taskers Found Nearby',
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                textAlign: TextAlign.center,
+              ),
+              SizedBox(height: 10),
+              Text(
+                'It looks like there are no taskers available near "$location". '
+                'Please try a different location or check back later.',
+                style: TextStyle(fontSize: 16, color: Colors.grey[700]),
+                textAlign: TextAlign.center,
+              ),
+              SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: Text('Back to Search'),
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
