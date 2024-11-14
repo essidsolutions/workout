@@ -1,7 +1,6 @@
-// Create a drawer that contains the user profile and the app settings
-
 // app_drawer.dart
 import 'package:flutter/material.dart';
+import 'login_page.dart'; // Import the login page
 
 class AppDrawer extends StatelessWidget {
   @override
@@ -10,9 +9,9 @@ class AppDrawer extends StatelessWidget {
       child: ListView(
         padding: EdgeInsets.zero,
         children: <Widget>[
-          DrawerHeader(
+          const DrawerHeader(
             decoration: BoxDecoration(
-              color: Colors.blue,
+              color: Colors.amber,
             ),
             child: Text(
               'Mohamed Essid',
@@ -24,22 +23,27 @@ class AppDrawer extends StatelessWidget {
           ),
           ListTile(
             leading: Icon(Icons.home),
-            title: Text('Home'),
+            title: const Text('Home'),
             onTap: () {
               Navigator.pop(context);
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.login),
+            title: Text('Login'),
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => LoginPage()),
+              );
             },
           ),
           ListTile(
             leading: Icon(Icons.settings),
             title: Text('Settings'),
             onTap: () {
-              Navigator.pop(context, );
-            },
-          ), ListTile(
-            leading: Icon(Icons.settings),
-            title: Text('About Us'),
-            onTap: () {
-              Navigator.pop(context, );
+              Navigator.pop(context);
             },
           ),
           // Add more ListTiles for other pages here
